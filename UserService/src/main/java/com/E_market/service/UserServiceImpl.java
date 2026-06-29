@@ -37,12 +37,17 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserEntity getUser(Long id) {
 		Optional<UserEntity> user = userRepo.findById(id);
-		return user.get();
+		return user.orElseThrow(() -> new RuntimeException("Invalid Id!"));
+	}
+
+	@Override
+	public UserEntity getUser(String email) {
+		Optional<UserEntity> user = userRepo.findByEmail(email);
+		return user.orElseThrow(() -> new RuntimeException("User not found with email: " + email));
 	}
 
 	@Override
 	public List<UserEntity> getAll() {
-		
 		return userRepo.findAll();
 	}
 
