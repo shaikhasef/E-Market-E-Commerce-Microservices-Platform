@@ -4,13 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.E_market.entity.UserEntity;
 import com.E_market.repository.userRepository;
 
-
-
-
+@Service
 public class UserServiceImpl implements UserService{
 	
 	@Autowired
@@ -29,9 +28,9 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserEntity loginUser(String username, String password) {
 		
-			UserEntity loginedUser = userRepo.findByUsernameAndPassword(username, password);
-		
-		    return loginedUser;
+			
+		   return userRepo.findByUsernameAndPassword(username, password)
+		            .orElse(null);
 	}
 
 	@Override
