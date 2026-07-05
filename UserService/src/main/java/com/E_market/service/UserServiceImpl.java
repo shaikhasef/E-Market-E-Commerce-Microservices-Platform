@@ -18,13 +18,17 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public String registerUser(UserEntity user) {
 		try {
+			user.setId(userRepo.getLastId().orElse(1000l)+1);
+			System.out.print(user.toString());
 			 userRepo.save(user);
 		} catch (Exception e) {
+			System.out.print(e.toString());
 			return "Exception Occure in user creation ";
 		}
 		return "user created successfully.";
 	}
 
+	
 	@Override
 	public UserEntity loginUser(String username, String password) {
 		

@@ -17,4 +17,7 @@ public interface userRepository extends JpaRepository<UserEntity, Long>{
 	Optional<UserEntity> findByUsernameAndPassword(String username, String password);
 
     public Optional<UserEntity> findByEmail(String email);
+    
+    @Query("SELECT MAX(u.id) FROM UserEntity u")
+    public Optional<Long> getLastId();
 }

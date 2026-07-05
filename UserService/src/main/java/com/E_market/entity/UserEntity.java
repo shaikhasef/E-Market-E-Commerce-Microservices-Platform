@@ -14,8 +14,11 @@ import lombok.RequiredArgsConstructor;
 @NoArgsConstructor
 @RequiredArgsConstructor
 public class UserEntity {
+	
 	@Id
+	
 	private Long id;
+
 	@NonNull
 	private String firstName;
 	@NonNull
