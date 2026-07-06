@@ -75,4 +75,6 @@ public class UserController {
 		String msg = service.deleteUser(id);
 		return new ResponseEntity<String>(msg,HttpStatus.OK);
 	}
+	
+	
 }
