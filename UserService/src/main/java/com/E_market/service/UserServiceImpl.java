@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService{
 	public String registerUser(UserEntity user) {
 		try {
 			user.setId(userRepo.getLastId().orElse(1000l)+1);
-			System.out.print(user.toString());
+			
 			 userRepo.save(user);
 		} catch (Exception e) {
 			System.out.print(e.toString());
